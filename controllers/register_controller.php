@@ -29,7 +29,7 @@ class RegisterController
                 'password2' => $_POST['validPassword2']
             );
 
-//            if ( isset($arrayFields['validName']) ) {
+            if ( isset($arrayFields['name']) ) {
 
             foreach ($arrayFields as $fieldName => $oneField) {
                 if ($oneField == '' || !isset($oneField)) {
@@ -55,25 +55,17 @@ class RegisterController
 //                $db->insert('user', [$arrayFields['email'],$arrayFields['password'], $arrayFields['name']], 'email, password, name');
 //                $db->insert('profile', $arrayFields['name'], 'name');// тут name был в массиве
                 $array = array('result' => 'success');
-//                echo json_encode($array);
+                echo json_encode($array);
                 //echo '<span style="color: green; font-weight: bold; margin-bottom: 10px; display: block;"><hr>' . 'User successfully registered.' . '<hr>' . '</span>';
             } else {
 
                 $array = array('result' => 'error', 'text_error' => $errors);
-//                echo json_encode($array);
+                echo json_encode($array);
                 //echo '<span style="color: red; font-weight: bold; margin-bottom: 10px; display: block;"><hr>' . $errors['0'] . '<hr></span>';
             }
 
 //            $db->closeConnection();
         }
-//    }
-
-//    function saveToDB($array) {
-//
-//        require_once "../profile/core/model.php";
-//        $db = new DBClass(SERVER, USER, PASS, DBNAME);
-//        $db->insert('user', 'asasas', 'email');
-//
-//    }
+    }
 }
 

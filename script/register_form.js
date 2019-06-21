@@ -42,7 +42,7 @@ $(document).ready(function() {
             },
             success: function (data) {
 
-                alert(data);
+                alert(data.result);
                 // if(data.result == 'success'){
                 //     //console.log(data.result);
                 //     alert('User successfully registered');
@@ -57,6 +57,7 @@ $(document).ready(function() {
 
             }
         })
+        return false;
     });
 });
 //     $('#form').submit(function(){
