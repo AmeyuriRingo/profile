@@ -1,0 +1,14 @@
+{
+  "name": "profile",
+  "authors": [
+    {
+      "name": "Ringo",
+      "email": "Nickos_K@mail.ru"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+
+    }
+  }
+}
