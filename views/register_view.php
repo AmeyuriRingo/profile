@@ -20,7 +20,6 @@
             <div class="col-lg-5">
                 <div class="op">
                     <form class="formBorder" method="POST" id="form" action="" novalidate>
-
                         <div class="form-group">
                             <h3>Register</h3>
 
@@ -48,13 +47,11 @@
                             <button type="submit" id="do_register" name="do_register" class="btn btn-primary">Register</button>
                         </div>
                     </form>
-                    <div id="errorMess"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div id="result_form"></div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>

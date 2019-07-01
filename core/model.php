@@ -6,7 +6,7 @@ define('USER', 'root');
 define('PASS', '89911151Nk!');
 define('DBNAME', 'site_profiles');
 
-class DBCLass {
+class DBClass {
 
     private $server, $user, $pass, $dbname, $db;
 
@@ -49,6 +49,8 @@ class DBCLass {
 
     public function select($what, $from, $where = null, $order = null) {
 
+        global $connection;
+        $what = mysqli_real_escape_string($connection, $what);
         $sql = 'SELECT ' . $what . ' FROM ' . $from;
         if ($where != null) $sql .= ' WHERE ' . $where;
         if ($order != null) $sql .= ' ORDER BY ' . $order;
@@ -84,10 +86,12 @@ class DBCLass {
         $numValues = count($values);
         for ($i = 0; $i < $numValues; $i++) {
 
-            if (is_string($values[$i])) $values[$i] = '"' . $values[$i] . '"';
+            if (is_string($values[$i]))
+                $values[$i] = mysqli_real_escape_string($connection, $values[$i]);
+                $values[$i] = '"' . $values[$i] . '"';
         }
         $values = implode(',', $values);
-        $insert .= ' VALUES (' ."'"  . $values . "'" . ')';
+        $insert .= ' VALUES ('  . $values . ')';
         $ins = mysqli_query($connection, $insert);
         return ($ins) ? true : false;
 
@@ -96,6 +100,7 @@ class DBCLass {
     public function update($table,$what,$value,$where = null,$limit = null) {
 
         global $connection;
+        $value = mysqli_real_escape_string($connection, $value);
         $update = 'UPDATE ' . $table . ' SET ' . $what . '=' . $value;
         if ($where != null) $update .= 'WHERE ' . $where;
         if ($limit != null) $update .= 'LIMIT ' . $limit;
@@ -126,11 +131,5 @@ class DBCLass {
                 return false;
             }
         }
-    }
-
-    function escapeString($value) {
-
-        global $connection;
-        return  mysqli_real_escape_string($connection,$value);
     }
 }
