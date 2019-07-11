@@ -4,7 +4,8 @@ namespace route;
 
 class Router
 {
-    public function start() {
+    public function start()
+    {
 
         $route = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
         $routing = [

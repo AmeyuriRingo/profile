@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $("#do_register").on("click", function () {
 
         var validEmail = $("#email").val().trim();
@@ -21,16 +21,16 @@ $(document).ready(function() {
             beforeSend: function () {
 
                 $("#do_register").prop("disable", true);
-                window.location = "http://localhost/profile/";
             },
-            success: function(data){
+            success: function (data) {
 
-                if(data.result == 'success'){
-                    alert('User successfully registered');
+                if (data.result == 'success') {
+                    window.location = 'http://localhost/profile/login';
+                    alert('User successfully registered, please, sign in');
                 } else {
-                    for(var errorField in data.text_error){
-                        $('#'+errorField+'_error').html(data.text_error[errorField]);
-                        $('#'+errorField+'_error').show();
+                    for (var errorField in data.text_error) {
+                        $('#' + errorField + '_error').html(data.text_error[errorField]);
+                        $('#' + errorField + '_error').show();
                     }
                 }
                 $("#do_register").prop("disable", false);

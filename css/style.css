@@ -3,6 +3,21 @@
   height: 100vh;
 }
 
+.flex-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: red;
+}
+body{
+  background: red;
+}
+
+.register-form{
+  width: 500px;
+  height: 500px;
+}
+
 header, main {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -29,6 +44,10 @@ header .nav {
   border: 2px solid #FF0000;
 }
 
+.form-group{
+    color: red;
+}
+
 .beck {
   padding-top: 50px;
 }
@@ -41,6 +60,8 @@ header .nav {
 .hover-ifect:hover {
   cursor: pointer;
 }
+
+
 
 label {
   color: #000000;
@@ -69,7 +90,7 @@ label {
 
 .formBorder{
   border: 2px solid blue;
-  padding: 20px
+  padding: 20px;
 }
 
 .overlay {

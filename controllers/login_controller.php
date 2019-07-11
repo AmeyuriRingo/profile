@@ -7,9 +7,15 @@ $registerController->login();
 
 class LoginController
 {
+    public function __construct()
+    {
+        session_unset();
+    }
+
     public function login()
     {
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+
             $errors = array();
             $arrayFields = array(
                 'email' => $_REQUEST['validEmail'],
@@ -18,17 +24,47 @@ class LoginController
 
             require_once "/Library/WebServer/Documents/profile/core/model.php";
             $db = new DBClass(SERVER, USER, PASS, DBNAME);
-            $user = $db->select('email, password, name', 'user');
+            $user = $db->select('email, password, id', 'user', "email = '" . $arrayFields['email'] . "'");
 
-            if ( $user[0]['email'] == $arrayFields['email'] && $user[0]['password'] == $arrayFields['password'] ) {
-                $array = array('result' => 'success');
-                echo json_encode($array);
-            } elseif ( $user[0]['email'] != $arrayFields['email'] ) {
-                $errors['email'] = "User with this email is nod registered";
+            if ($arrayFields['email'] == "" and $arrayFields['password'] == "") {
+
+                $errors['email'] = "Required field";
+                $errors['password'] = "Required field";
                 $array = array('result' => 'error', 'text_error' => $errors);
                 echo json_encode($array);
+                die();
+            } elseif ($arrayFields['email'] == "") {
+
+                $errors['email'] = "Required field";
+                $array = array('result' => 'error', 'text_error' => $errors);
+                echo json_encode($array);
+                die();
+            } elseif ($arrayFields['password'] == "") {
+
+                $errors['password'] = "Required field";
+                $array = array('result' => 'error', 'text_error' => $errors);
+                echo json_encode($array);
+                die();
+            }
+
+            if (isset($user)) {
+
+                if (password_verify($arrayFields['password'], $user[0]['password'])) {
+
+                    session_start();
+                    $_SESSION['user_id'] = $user[0]['id'];
+
+                    $array = array('result' => 'success');
+                    echo json_encode($array);
+                } else {
+
+                    $errors['password'] = "Invalid password. Try again";
+                    $array = array('result' => 'error', 'text_error' => $errors);
+                    echo json_encode($array);
+                }
             } else {
-                $errors['password'] = "Invalid password. Try again";
+
+                $errors['email'] = "User with this email is not registered";
                 $array = array('result' => 'error', 'text_error' => $errors);
                 echo json_encode($array);
             }

@@ -20,8 +20,8 @@ $(document).ready(function () {
             },
             success: function (data) {
                 if (data.result == 'success') {
+                    window.location = 'http://localhost/profile/';
                     alert('User successfully signed in');
-                    window.location = "http://localhost/profile/";
                 } else {
                     for (var errorField in data.text_error) {
                         $('#' + errorField + '_error').html(data.text_error[errorField]);

@@ -59,6 +59,7 @@ class DBClass {
         $query = mysqli_query($connection, $sql);
         if ($query == true) {
 
+            $fetched = null;
             $rows = mysqli_num_rows($query);
             for ($i = 0; $i < $rows; $i++) {
 
@@ -101,9 +102,9 @@ class DBClass {
 
         global $connection;
         $value = mysqli_real_escape_string($connection, $value);
-        $update = 'UPDATE ' . $table . ' SET ' . $what . '=' . $value;
-        if ($where != null) $update .= 'WHERE ' . $where;
-        if ($limit != null) $update .= 'LIMIT ' . $limit;
+        $update = 'UPDATE ' . $table . ' SET ' . $what . " = '" . $value . "'";
+        if ($where != null) $update .= ' WHERE ' . $where;
+        if ($limit != null) $update .= ' LIMIT ' . $limit;
         $updated = mysqli_query($connection, $update);
         return ($updated) ? true : false;
     }

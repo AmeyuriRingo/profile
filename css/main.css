@@ -1,9 +1,41 @@
-.label_desc{
-    display: block;
+body, html{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+h3 {
+    text-align: center;
+    margin: 0px 0px 20px 0px;
+}
+
+a{
+    text-align: center;
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid blue;
+    padding: 20px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
 .error{
+    font-size: 13px;
     display: none;
+    color: #ff5d40;
 }
-.error_input{
-    border: 2px solid #FF0000;
-}
+
