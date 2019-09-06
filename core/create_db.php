@@ -30,10 +30,10 @@ mysqli_query($connect, 'CREATE TABLE `profile` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;');
 mysqli_query($connect, 'CREATE TABLE `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `email` varchar(50),
-  `password` varchar(100),
-  `name` varchar(50),
-  `rank` tinyint(2),
+  `email` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `rank` tinyint(2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;');
 mysqli_query($connect, 'INSERT INTO `test_table` VALUES (1,\'test_text\');');
