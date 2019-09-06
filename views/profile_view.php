@@ -89,7 +89,7 @@ $skills = $profileController->skills();
                                     <input type="text" name="work_experience" class="form-control" id="work_experience" placeholder="Experience">
                                 </div>
                                 <div class="form-group">
-                                    <label>Skills</label>
+                                     <label>Skills</label>
                                     <input type="text" name="skills" class="form-control" id="skills" placeholder="Skills">
                                 </div>
                                 <div class="form-group">
