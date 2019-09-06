@@ -26,8 +26,8 @@ class Router
 
         } else {
 
-//            require_once "../profile/views/404.php";
-            print_r('No such page!');
+            require_once "../profile/views/404.php";
+            //print_r('No such page!');
         };
     }
 }
