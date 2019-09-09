@@ -3,7 +3,7 @@
 namespace controllers;
 define('SERVER', 'localhost');
 define('USER', 'root');
-define('PASS', '89911151Nk!');
+define('PASS', '');
 define('DBNAME', 'site_profiles');
 
 class DBClass {
