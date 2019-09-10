@@ -2,8 +2,6 @@
 
 namespace controllers;
 
-$registerController = new LoginController();
-$registerController->login();
 
 class LoginController
 {
@@ -22,7 +20,7 @@ class LoginController
                 'password' => $_REQUEST['validPassword'],
             );
 
-            require_once "/Library/WebServer/Documents/profile/core/model.php";
+            require_once "../profile/core/model.php";
             $db = new DBClass(SERVER, USER, PASS, DBNAME);
             $user = $db->select('email, password, id', 'user', "email = '" . $arrayFields['email'] . "'");
 
@@ -51,7 +49,7 @@ class LoginController
 
                 if (password_verify($arrayFields['password'], $user[0]['password'])) {
 
-                    session_start();
+                    //session_start();
                     $_SESSION['user_id'] = $user[0]['id'];
 
                     $array = array('result' => 'success');

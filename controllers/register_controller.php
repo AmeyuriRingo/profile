@@ -1,8 +1,6 @@
 <?php
 namespace controllers;
 
-$registerController = new RegisterController();
-$registerController->register();
 
 class RegisterController
 {
@@ -10,7 +8,7 @@ class RegisterController
     {
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
-            require_once "/Library/WebServer/Documents/profile/core/model.php";
+            require_once "../profile/core/model.php";
             $db = new DBClass(SERVER, USER, PASS, DBNAME);
             $errors = array();
             $arrayFields = array(

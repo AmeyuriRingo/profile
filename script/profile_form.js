@@ -1,14 +1,14 @@
 $(document).ready(function () {
     $("#update").on("click", function () {
 
-        var contacts = $("#contacts").val().trim();
-        var education = $("#education").val().trim();
-        var work_experience = $("#work_experience").val().trim();
-        var skills = $("#skills").val().trim();
+        let contacts = $("#contacts").val().trim();
+        let education = $("#education").val().trim();
+        let work_experience = $("#work_experience").val().trim();
+        let skills = $("#skills").val().trim();
 
         $.ajax({
             type: "POST",
-            url: "../profile/controllers/profile_controller.php",
+            url: "/profile/form",
             dataType: "json",
             data: {
                 'contacts': contacts,
@@ -24,8 +24,7 @@ $(document).ready(function () {
                     alert('Updating error');
                 }
             },
-            error: function (data) {
-                console.log(data);
+            error: function () {
                 alert("Server error");
             }
         })

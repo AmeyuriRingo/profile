@@ -1,14 +1,14 @@
 $(document).ready(function () {
     $("#do_login").on("click", function () {
 
-        var validEmail = $("#email").val().trim();
-        var validPassword = $("#password").val().trim();
+        let validEmail = $("#email").val().trim();
+        let validPassword = $("#password").val().trim();
 
         $('.error').hide();
 
         $.ajax({
             type: "POST",
-            url: "../profile/controllers/login_controller.php",
+            url: "/profile/login/form",
             dataType: "json",
             data: {
                 'validEmail': validEmail,
@@ -23,9 +23,10 @@ $(document).ready(function () {
                     window.location = 'http://localhost/profile/';
                     alert('User successfully signed in');
                 } else {
-                    for (var errorField in data.text_error) {
-                        $('#' + errorField + '_error').html(data.text_error[errorField]);
-                        $('#' + errorField + '_error').show();
+                    for (let errorField in data.text_error) {
+                        let error = $('#' + errorField + '_error');
+                        error.html(data.text_error[errorField]);
+                        error.show();
                     }
                 }
                 $("#do_login").prop("disable", false);

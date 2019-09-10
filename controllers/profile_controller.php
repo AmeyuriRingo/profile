@@ -6,9 +6,6 @@ require_once "/Library/WebServer/Documents/profile/core/model.php";
 global $db;
 $db = new DBClass(SERVER, USER, PASS, DBNAME);
 
-$registerController = new ProfileController();
-$registerController->update();
-
 class ProfileController
 {
 //    /**

@@ -1,16 +1,16 @@
 $(document).ready(function () {
     $("#do_register").on("click", function () {
 
-        var validEmail = $("#email").val().trim();
-        var validName = $("#name").val().trim();
-        var validPassword = $("#password").val().trim();
-        var validPassword2 = $("#password2").val().trim();
+        let validEmail = $("#email").val().trim();
+        let validName = $("#name").val().trim();
+        let validPassword = $("#password").val().trim();
+        let validPassword2 = $("#password2").val().trim();
 
         $('.error').hide();
 
         $.ajax({
             type: "POST",
-            url: "../profile/controllers/register_controller.php",
+            url: "/profile/register/form",
             dataType: "json",
             data: {
                 'validEmail': validEmail,
@@ -28,9 +28,10 @@ $(document).ready(function () {
                     window.location = 'http://localhost/profile/login';
                     alert('User successfully registered, please, sign in');
                 } else {
-                    for (var errorField in data.text_error) {
-                        $('#' + errorField + '_error').html(data.text_error[errorField]);
-                        $('#' + errorField + '_error').show();
+                    for (let errorField in data.text_error) {
+                        let error = $('#' + errorField + '_error')
+                        error.html(data.text_error[errorField]);
+                        error.show();
                     }
                 }
                 $("#do_register").prop("disable", false);
