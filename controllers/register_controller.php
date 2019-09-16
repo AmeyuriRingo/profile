@@ -9,7 +9,7 @@ class RegisterController
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
             require_once "../profile/core/model.php";
-            $db = new DBClass(SERVER, USER, PASS, DBNAME);
+            $db = new DBClass();
             $errors = array();
             $arrayFields = array(
                 'name' => $_REQUEST['validName'],
@@ -50,7 +50,6 @@ class RegisterController
 
                 $db->insert('user', [$arrayFields['email'], password_hash($arrayFields['password'], PASSWORD_DEFAULT), $arrayFields['name']], 'email, password, name');
                 $db->insert('profile', [$arrayFields['name']], 'name');
-                $db->closeConnection();
             } else {
 
                 $array = array('result' => 'error', 'text_error' => $errors);

@@ -21,7 +21,7 @@ class LoginController
             );
 
             require_once "../profile/core/model.php";
-            $db = new DBClass(SERVER, USER, PASS, DBNAME);
+            $db = new DBClass();
             $user = $db->select('email, password, id', 'user', "email = '" . $arrayFields['email'] . "'");
 
             if ($arrayFields['email'] == "" and $arrayFields['password'] == "") {
@@ -66,7 +66,6 @@ class LoginController
                 $array = array('result' => 'error', 'text_error' => $errors);
                 echo json_encode($array);
             }
-            $db->closeConnection();
         }
     }
 }

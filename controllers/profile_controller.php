@@ -2,9 +2,9 @@
 
 namespace controllers;
 
-require_once "/Library/WebServer/Documents/profile/core/model.php";
+require_once "../profile/core/model.php";
 global $db;
-$db = new DBClass(SERVER, USER, PASS, DBNAME);
+$db = new DBClass();
 
 class ProfileController
 {
@@ -24,10 +24,8 @@ class ProfileController
         global $db;
         if (isset($_SESSION['user_id'])){
 
-            $db->openConnection();
             $id = $_SESSION['user_id'];
             $contacts = $db->select('contacts', 'profile', "id = '" . $id . "'");
-            $db->closeConnection();
             return $contacts;
         }
 
@@ -38,10 +36,8 @@ class ProfileController
         global $db;
         if (isset($_SESSION['user_id'])){
 
-            $db->openConnection();
             $id = $_SESSION['user_id'];
             $education = $db->select('education', 'profile', "id = '" . $id . "'");
-            $db->closeConnection();
             return $education;
         }
     }
@@ -51,10 +47,8 @@ class ProfileController
         global $db;
         if (isset($_SESSION['user_id'])){
 
-            $db->openConnection();
             $id = $_SESSION['user_id'];
             $workExperience = $db->select('experience', 'profile', "id = '" . $id . "'");
-            $db->closeConnection();
             return $workExperience;
         }
 
@@ -65,10 +59,8 @@ class ProfileController
         global $db;
         if (isset($_SESSION['user_id'])){
 
-            $db->openConnection();
             $id = $_SESSION['user_id'];
             $skills = $db->select('skills', 'profile', "id = '" . $id . "'");
-            $db->closeConnection();
             return $skills;
         }
     }
@@ -78,10 +70,8 @@ class ProfileController
         global $db;
         if (isset($_SESSION['user_id'])){
 
-            $db->openConnection();
             $id = $_SESSION['user_id'];
             $user = $db->select('email, name', 'user', "id = '" . $id . "'");
-            $db->closeConnection();
             return $user;
         } else {
 
@@ -108,7 +98,6 @@ class ProfileController
             );
             if (isset($arrayFields)) {
 
-                $db->openConnection();
                 $array = array('result' => 'success');
                 echo json_encode($array);
 
@@ -128,8 +117,6 @@ class ProfileController
 
                     $db->update('profile', 'skills', $arrayFields['skills'], 'id = ' . $id);
                 }
-
-                $db->closeConnection();
             } else {
 
                 $array = array('result' => 'error');

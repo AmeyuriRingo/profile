@@ -1,61 +1,28 @@
 <?php
 
 namespace controllers;
-define('SERVER', 'localhost');
-define('USER', 'root');
-define('PASS', '');
-define('DBNAME', 'site_profiles');
 
-class DBClass {
+class DBClass
+{
+    function __construct()
+    {
 
-    private $server, $user, $pass, $dbname, $db;
-
-    function __construct($server, $user, $pass, $dbname) {
-
-        $this->server = $server;
-        $this->user = $user;
-        $this->pass = $pass;
-        $this->dbname = $dbname;
-        $this->openConnection();
+        require_once "connection.php";
     }
 
-    public function openConnection() {
-
-        if (!$this->db) {
-
-            global $connection;
-            $connection = mysqli_connect($this->server, $this->user, $this->pass);
-            if ($connection == true) {
-
-                $selectDB = mysqli_select_db($connection, $this->dbname);
-                if ($selectDB == true) {
-
-                    $this->db = true;
-                    mysqli_query($connection, 'SET NAMES UTF8');
-                    return true;
-                } else {
-
-                    return false;
-                }
-            } else {
-
-                return false;
-            }
-        } else {
-
-            return true;
-        }
-    }
-
-    public function select($what, $from, $where = null, $order = null) {
+    public function select($what, $from, $where = null, $order = null)
+    {
 
         global $connection;
+        if (mysqli_connect_error()) {
+            die('Connect Error (' . mysqli_connect_errno() . ') '
+                . mysqli_connect_error());
+        }
         $what = mysqli_real_escape_string($connection, $what);
         $sql = 'SELECT ' . $what . ' FROM ' . $from;
         if ($where != null) $sql .= ' WHERE ' . $where;
         if ($order != null) $sql .= ' ORDER BY ' . $order;
 
-        global $connection;
         $query = mysqli_query($connection, $sql);
         if ($query == true) {
 
@@ -78,7 +45,8 @@ class DBClass {
         }
     }
 
-    public function insert($table, $values, $rows = null) {
+    public function insert($table, $values, $rows = null)
+    {
 
         global $connection;
         $insert = 'INSERT INTO ' . $table;
@@ -89,16 +57,17 @@ class DBClass {
 
             if (is_string($values[$i]))
                 $values[$i] = mysqli_real_escape_string($connection, $values[$i]);
-                $values[$i] = '"' . $values[$i] . '"';
+            $values[$i] = '"' . $values[$i] . '"';
         }
         $values = implode(',', $values);
-        $insert .= ' VALUES ('  . $values . ')';
+        $insert .= ' VALUES (' . $values . ')';
         $ins = mysqli_query($connection, $insert);
         return ($ins) ? true : false;
 
     }
 
-    public function update($table,$what,$value,$where = null,$limit = null) {
+    public function update($table, $what, $value, $where = null, $limit = null)
+    {
 
         global $connection;
         $value = mysqli_real_escape_string($connection, $value);
@@ -109,7 +78,8 @@ class DBClass {
         return ($updated) ? true : false;
     }
 
-    public function delete($table, $where = null) {
+    public function delete($table, $where = null)
+    {
 
         global $connection;
         $sql = 'DELETE FROM ' . $table . ' WHERE ' . $where;
@@ -118,19 +88,16 @@ class DBClass {
         return ($deleted) ? true : false;
     }
 
-    public function closeConnection() {
+    function __destruct()
+    {
 
         global $connection;
-        if ($this->db) {
+        if (mysqli_close($connection)) {
 
-            if (mysqli_close($connection)) {
+            return true;
+        } else {
 
-                $this->db = false;
-                return true;
-            } else {
-
-                return false;
-            }
+            return false;
         }
     }
 }
