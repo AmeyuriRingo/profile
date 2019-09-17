@@ -13,32 +13,32 @@
 </head>
 
 <body>
-<form class="register-form" method="POST" id="form" action="" novalidate>
+<form class="register-form" method="POST" id="register-form" novalidate>
     <div class="form-group">
         <h3>Sign Up</h3>
 
-        <label for="exampleInputEmail1">Email address</label>
+        <label for="email">Email address</label>
         <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
                placeholder="Enter email" required>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        <label id="email_error" class="error"></label>
+        <label id="email_error" class="error-display"></label>
     </div>
     <div class="form-group">
-        <label for="Name">Name</label>
+        <label for="name">Name</label>
         <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" required>
-        <label id="name_error" class="error"></label>
+        <label id="name_error" class="error-display"></label>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
         <input type="password" name="password" class="form-control" id="password"
                placeholder="Password(at least 6 characters)" required>
-        <label id="password_error" class="error"></label>
+        <label id="password_error" class="error-display"></label>
     </div>
     <div class="form-group">
         <label for="password2">Password</label>
         <input type="password" name="password2" class="form-control" id="password2" placeholder="Confirm the password"
                required>
-        <label id="password2_error" class="error"></label>
+        <label id="password2_error" class="error-display"></label>
     </div>
     <div class="form-group">
         <button type="submit" id="do_register" name="do_register" class="btn btn-primary">Register</button>
@@ -46,8 +46,8 @@
         <a href="login">Already have an account?</a>
     </div>
 </form>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -56,6 +56,7 @@
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../profile/script/jquery.validate.min.js"></script>
 <script src="../profile/script/register_form.js"></script>
 </body>
 

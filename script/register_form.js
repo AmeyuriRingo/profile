@@ -1,4 +1,27 @@
 $(document).ready(function () {
+
+    $("#register-form").validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
+            },
+            name: {
+                required: true,
+                minlength: 3
+            },
+            password: {
+                required: true,
+                minlength: 6
+            },
+            password2: {
+                required: true,
+                minlength: 6,
+                equalTo: "#password"
+            }
+        }
+    });
+
     $("#do_register").on("click", function () {
 
         let validEmail = $("#email").val().trim();
@@ -6,7 +29,7 @@ $(document).ready(function () {
         let validPassword = $("#password").val().trim();
         let validPassword2 = $("#password2").val().trim();
 
-        $('.error').hide();
+        $('.error-display').hide();
 
         $.ajax({
             type: "POST",

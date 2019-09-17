@@ -23,22 +23,6 @@ class RegisterController
 
                 $errors['email'] = 'User with this email already registered';
             }
-            if ($arrayFields['email'] == '') {
-
-                $errors['email'] = 'Required field';
-            } elseif (!filter_var($arrayFields['email'], FILTER_VALIDATE_EMAIL))
-                $errors['email'] = 'Email is incorrect';
-
-            if ($arrayFields['name'] == '') {
-
-                $errors['name'] = 'Required field';
-            } elseif (iconv_strlen($arrayFields['name']) < 4)
-                $errors['name'] = 'Name must be more than 4 characters';
-
-            if (iconv_strlen($arrayFields['password']) < 6) {
-
-                $errors['password'] = 'Password must be more than 6 characters';
-            }
 
             if ($arrayFields['password'] != $arrayFields['password2'])
                 $errors['password2'] = 'Passwords do not match';

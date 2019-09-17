@@ -1,10 +1,23 @@
 $(document).ready(function () {
+    $("#login-form").validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
+                required: true,
+                minlength: 6
+            }
+        }
+    });
+
     $("#do_login").on("click", function () {
 
         let validEmail = $("#email").val().trim();
         let validPassword = $("#password").val().trim();
 
-        $('.error').hide();
+        $('.error-display').hide();
 
         $.ajax({
             type: "POST",

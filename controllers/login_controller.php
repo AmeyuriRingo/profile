@@ -24,27 +24,6 @@ class LoginController
             $db = new DBClass();
             $user = $db->select('email, password, id', 'user', "email = '" . $arrayFields['email'] . "'");
 
-            if ($arrayFields['email'] == "" and $arrayFields['password'] == "") {
-
-                $errors['email'] = "Required field";
-                $errors['password'] = "Required field";
-                $array = array('result' => 'error', 'text_error' => $errors);
-                echo json_encode($array);
-                die();
-            } elseif ($arrayFields['email'] == "") {
-
-                $errors['email'] = "Required field";
-                $array = array('result' => 'error', 'text_error' => $errors);
-                echo json_encode($array);
-                die();
-            } elseif ($arrayFields['password'] == "") {
-
-                $errors['password'] = "Required field";
-                $array = array('result' => 'error', 'text_error' => $errors);
-                echo json_encode($array);
-                die();
-            }
-
             if (isset($user)) {
 
                 if (password_verify($arrayFields['password'], $user[0]['password'])) {
