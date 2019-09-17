@@ -1,7 +1,7 @@
 <?php
 
 namespace controllers;
-
+use core\DBClass as db;
 
 class LoginController
 {
@@ -21,7 +21,7 @@ class LoginController
             );
 
             require_once "../profile/core/model.php";
-            $db = new DBClass();
+            $db = new db();
             $user = $db->select('email, password, id', 'user', "email = '" . $arrayFields['email'] . "'");
 
             if (isset($user)) {

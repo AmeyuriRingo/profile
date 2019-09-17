@@ -4,7 +4,8 @@ namespace controllers;
 
 require_once "../profile/core/model.php";
 global $db;
-$db = new DBClass();
+use core\DBClass as db;
+$db = new db();
 
 class ProfileController
 {

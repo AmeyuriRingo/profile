@@ -1,6 +1,6 @@
 <?php
 
-namespace controllers;
+namespace core;
 
 class DBClass
 {

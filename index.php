@@ -2,6 +2,6 @@
 require_once "core/route.php";
 
 session_start();
-$router = new route\Router();
+$router = new core\Router();
 $router -> start();
 //phpinfo();
