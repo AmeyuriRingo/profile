@@ -12,10 +12,10 @@ class RegisterController
             $db = new DBClass();
             $errors = array();
             $arrayFields = array(
-                'name' => $_REQUEST['validName'],
-                'email' => $_REQUEST['validEmail'],
-                'password' => $_REQUEST['validPassword'],
-                'password2' => $_REQUEST['validPassword2']
+                'name' => $_REQUEST['name'],
+                'email' => $_REQUEST['email'],
+                'password' => $_REQUEST['password'],
+                'password2' => $_REQUEST['password2']
             );
             $user = $db->select('email, id', 'user', "email = '" . $arrayFields['email'] . "'");
 

@@ -1,21 +1,13 @@
 $(document).ready(function () {
     $("#update").on("click", function () {
 
-        let contacts = $("#contacts").val().trim();
-        let education = $("#education").val().trim();
-        let work_experience = $("#work_experience").val().trim();
-        let skills = $("#skills").val().trim();
+        let data = $("#profile-form").serialize();
 
         $.ajax({
             type: "POST",
             url: "/profile/form",
             dataType: "json",
-            data: {
-                'contacts': contacts,
-                'education': education,
-                'work_experience': work_experience,
-                'skills': skills
-            },
+            data: data,
             success: function (data) {
 
                 if (data.result == 'success') {

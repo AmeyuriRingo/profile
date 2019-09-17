@@ -16,8 +16,8 @@ class LoginController
 
             $errors = array();
             $arrayFields = array(
-                'email' => $_REQUEST['validEmail'],
-                'password' => $_REQUEST['validPassword'],
+                'email' => $_REQUEST['email'],
+                'password' => $_REQUEST['password'],
             );
 
             require_once "../profile/core/model.php";

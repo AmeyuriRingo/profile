@@ -24,10 +24,7 @@ $(document).ready(function () {
 
     $("#do_register").on("click", function () {
 
-        let validEmail = $("#email").val().trim();
-        let validName = $("#name").val().trim();
-        let validPassword = $("#password").val().trim();
-        let validPassword2 = $("#password2").val().trim();
+        let data = $("#register-form").serialize();
 
         $('.error-display').hide();
 
@@ -35,12 +32,7 @@ $(document).ready(function () {
             type: "POST",
             url: "/profile/register/form",
             dataType: "json",
-            data: {
-                'validEmail': validEmail,
-                'validName': validName,
-                'validPassword': validPassword,
-                'validPassword2': validPassword2
-            },
+            data: data,
             beforeSend: function () {
 
                 $("#do_register").prop("disable", true);

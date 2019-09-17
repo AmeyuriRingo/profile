@@ -74,23 +74,23 @@ $skills = $profileController->skills();
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" id="form" action="" >
+                            <form method="POST" id="profile-form" action="" >
                                 <label>Update your profile data</label>
                                 <div class="form-group">
                                     <label>Contacts</label>
-                                    <input type="text" name="contacts" class="form-control" id="contacts" placeholder="Contacts">
+                                    <input type="text" name="contacts" class="form-control" id="contacts" placeholder="Contacts" value="<?php if ($contacts[0]['contacts'] != null) echo $contacts[0]['contacts'];?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Education</label>
-                                    <input type="text" name="education" class="form-control" id="education" placeholder="Education">
+                                    <input type="text" name="education" class="form-control" id="education" placeholder="Education" value="<?php if ($education[0]['education'] != NULL) echo $education[0]['education'];?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Work experience</label>
-                                    <input type="text" name="work_experience" class="form-control" id="work_experience" placeholder="Experience">
+                                    <input type="text" name="work_experience" class="form-control" id="work_experience" placeholder="Experience" value="<?php if ($workExperience[0]['experience'] != null) echo $workExperience[0]['experience'];?>">
                                 </div>
                                 <div class="form-group">
                                      <label>Skills</label>
-                                    <input type="text" name="skills" class="form-control" id="skills" placeholder="Skills">
+                                    <input type="text" name="skills" class="form-control" id="skills" placeholder="Skills" value="<?php if ($skills[0]['skills'] != null) echo $skills[0]['skills'];?>">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" id="update" name="update" class="btn btn-primary">Update</button>

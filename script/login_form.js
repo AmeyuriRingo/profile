@@ -14,8 +14,7 @@ $(document).ready(function () {
 
     $("#do_login").on("click", function () {
 
-        let validEmail = $("#email").val().trim();
-        let validPassword = $("#password").val().trim();
+        let data = $("#login-form").serialize();
 
         $('.error-display').hide();
 
@@ -23,10 +22,7 @@ $(document).ready(function () {
             type: "POST",
             url: "/profile/login/form",
             dataType: "json",
-            data: {
-                'validEmail': validEmail,
-                'validPassword': validPassword,
-            },
+            data: data,
             beforeSend: function () {
 
                 $("#do_login").prop("disable", true);
