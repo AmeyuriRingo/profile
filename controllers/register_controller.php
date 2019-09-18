@@ -17,7 +17,7 @@ class RegisterController
                 'password' => $_REQUEST['password'],
                 'password2' => $_REQUEST['password2']
             );
-            $user = $db->select('email, id', 'user', "email = '" . $arrayFields['email'] . "'");
+            $user = $db->selectAll('user', "email = '" . $arrayFields['email'] . "'");
 
             if (isset($user)) {
 

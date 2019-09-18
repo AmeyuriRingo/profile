@@ -26,7 +26,7 @@ class ProfileController
         if (isset($_SESSION['user_id'])){
 
             $id = $_SESSION['user_id'];
-            $contacts = $db->select('contacts', 'profile', "id = '" . $id . "'");
+            $contacts = $db->selectOne('contacts', 'profile', "id = '" . $id . "'");
             return $contacts;
         }
 
@@ -38,7 +38,7 @@ class ProfileController
         if (isset($_SESSION['user_id'])){
 
             $id = $_SESSION['user_id'];
-            $education = $db->select('education', 'profile', "id = '" . $id . "'");
+            $education = $db->selectOne('education', 'profile', "id = '" . $id . "'");
             return $education;
         }
     }
@@ -49,7 +49,7 @@ class ProfileController
         if (isset($_SESSION['user_id'])){
 
             $id = $_SESSION['user_id'];
-            $workExperience = $db->select('experience', 'profile', "id = '" . $id . "'");
+            $workExperience = $db->selectOne('experience', 'profile', "id = '" . $id . "'");
             return $workExperience;
         }
 
@@ -61,7 +61,7 @@ class ProfileController
         if (isset($_SESSION['user_id'])){
 
             $id = $_SESSION['user_id'];
-            $skills = $db->select('skills', 'profile', "id = '" . $id . "'");
+            $skills = $db->selectOne('skills', 'profile', "id = '" . $id . "'");
             return $skills;
         }
     }
@@ -72,7 +72,7 @@ class ProfileController
         if (isset($_SESSION['user_id'])){
 
             $id = $_SESSION['user_id'];
-            $user = $db->select('email, name', 'user', "id = '" . $id . "'");
+            $user = $db->selectAll('user', "id = '" . $id . "'");
             return $user;
         } else {
 

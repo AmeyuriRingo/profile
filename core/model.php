@@ -10,7 +10,41 @@ class DBClass
         require_once "connection.php";
     }
 
-    public function select($what, $from, $where = null, $order = null)
+    public function selectAll($from, $where = null, $order = null)
+    {
+
+        global $connection;
+        if (mysqli_connect_error()) {
+            die('Connect Error (' . mysqli_connect_errno() . ') '
+                . mysqli_connect_error());
+        }
+        $sql = 'SELECT * FROM ' . $from;
+        if ($where != null) $sql .= ' WHERE ' . $where;
+        if ($order != null) $sql .= ' ORDER BY ' . $order;
+
+        $query = mysqli_query($connection, $sql);
+        if ($query == true) {
+
+            $fetched = null;
+            $rows = mysqli_num_rows($query);
+            for ($i = 0; $i < $rows; $i++) {
+
+                $results = mysqli_fetch_assoc($query);
+                $key = array_keys($results);
+                $numKeys = count($key);
+                for ($x = 0; $x < $numKeys; $x++) {
+
+                    $fetched[$i][$key[$x]] = $results[$key[$x]];
+                }
+            }
+            return $fetched;
+        } else {
+
+            return false;
+        }
+    }
+
+    public function selectOne($what, $from, $where = null, $order = null)
     {
 
         global $connection;

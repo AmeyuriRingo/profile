@@ -22,7 +22,7 @@ class LoginController
 
             require_once "../profile/core/model.php";
             $db = new db();
-            $user = $db->select('email, password, id', 'user', "email = '" . $arrayFields['email'] . "'");
+            $user = $db->selectAll('user', "email = '" . $arrayFields['email'] . "'");
 
             if (isset($user)) {
 
