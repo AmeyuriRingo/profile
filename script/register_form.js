@@ -39,7 +39,7 @@ $(document).ready(function () {
             },
             success: function (data) {
 
-                if (data.result == 'success') {
+                if (data == 'success') {
                     window.location = 'http://localhost/profile/login';
                     alert('User successfully registered, please, sign in');
                 } else {

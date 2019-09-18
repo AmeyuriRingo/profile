@@ -29,14 +29,14 @@ class RegisterController
 
             if (empty($errors)) {
 
-                $array = array('result' => 'success');
+                $array = array('success');
                 echo json_encode($array);
 
                 $db->insert('user', [$arrayFields['email'], password_hash($arrayFields['password'], PASSWORD_DEFAULT), $arrayFields['name']], 'email, password, name');
                 $db->insert('profile', [$arrayFields['name']], 'name');
             } else {
 
-                $array = array('result' => 'error', 'text_error' => $errors);
+                $array = array('text_error' => $errors);
                 echo json_encode($array);
             }
         }

@@ -10,7 +10,7 @@ $(document).ready(function () {
             data: data,
             success: function (data) {
 
-                if (data.result == 'success') {
+                if (data == 'success') {
                     alert('Profile successfully updated');
                 } else {
                     alert('Updating error');

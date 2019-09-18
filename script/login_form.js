@@ -28,7 +28,7 @@ $(document).ready(function () {
                 $("#do_login").prop("disable", true);
             },
             success: function (data) {
-                if (data.result == 'success') {
+                if (data == 'success') {
                     window.location = 'http://localhost/profile/';
                     alert('User successfully signed in');
                 } else {

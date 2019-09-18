@@ -98,7 +98,7 @@ class ProfileController
             );
             if (isset($arrayFields)) {
 
-                $array = array('result' => 'success');
+                $array = array('success');
                 echo json_encode($array);
 
                 if ($arrayFields['contacts'] != "") {
@@ -119,7 +119,7 @@ class ProfileController
                 }
             } else {
 
-                $array = array('result' => 'error');
+                $array = array('error');
                 echo json_encode($array);
             }
         }

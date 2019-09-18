@@ -28,21 +28,20 @@ class LoginController
 
                 if (password_verify($arrayFields['password'], $user[0]['password'])) {
 
-                    //session_start();
                     $_SESSION['user_id'] = $user[0]['id'];
 
-                    $array = array('result' => 'success');
+                    $array = array('success');
                     echo json_encode($array);
                 } else {
 
                     $errors['password'] = "Invalid password. Try again";
-                    $array = array('result' => 'error', 'text_error' => $errors);
+                    $array = array('text_error' => $errors);
                     echo json_encode($array);
                 }
             } else {
 
                 $errors['email'] = "User with this email is not registered";
-                $array = array('result' => 'error', 'text_error' => $errors);
+                $array = array('text_error' => $errors);
                 echo json_encode($array);
             }
         }
