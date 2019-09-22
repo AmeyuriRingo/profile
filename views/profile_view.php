@@ -74,7 +74,7 @@ $skills = $profileController->skills();
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" id="profile-form" action="" >
+                            <form method="POST" id="profile-form">
                                 <label>Update your profile data</label>
                                 <div class="form-group">
                                     <label>Contacts</label>

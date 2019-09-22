@@ -53,9 +53,16 @@ class Router
             $controller_obj = new $controller();
             $controller_obj->$action();
         } else {
-
             require_once "../profile/views/404.php";
             //print_r('No such page!');
         };
+    }
+
+    public static function renderView($__view)
+    {
+        ob_start();
+        require_once $__view;
+        $output = ob_get_clean();
+        return $output;
     }
 }

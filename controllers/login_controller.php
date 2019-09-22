@@ -2,11 +2,14 @@
 
 namespace controllers;
 use core\DBClass as db;
-
+//use core\Router as route;
+//$page = route::renderView('../profile/views/profile_view.php');
+//die($page);
 class LoginController
 {
     public function __construct()
     {
+
         session_unset();
     }
 
